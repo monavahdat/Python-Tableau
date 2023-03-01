@@ -18,19 +18,6 @@ data = pd.read_csv('transaction.csv', sep=';')
 #summary of the data
 data.info()
 
-#playing around with variables
-var_list = ['apple', 'banana', 'pear'] #mutable
-var_tuple = ('London', 'Vancouver', 'Chicago') #immutable
-var_range = range(10) #from 0 to 9
-var_range2 = range(2,9) #from 2 to 8
-
-for i in var_range2:
-    print("range# ", i)
-    
-var_dict = {'Name':'Mona', "Location":'Canada', 'company':'Motorola Solutions'}
-var_set = {'apple', 'pear', 'cherry'} #immutable
-var_boolian = True
-
 #--------------------------
 # WORKING WITH CALCULATIONS
 
@@ -59,24 +46,16 @@ data.info()
 print(data['Day'].dtype)
 
 #adding column Date to cncat day, month, and year in format like Feb-12-2023
-data['Date'] = data['Day'].astype(str)  + '-' + data['Month'] + '-' + data['Year'].astype(str) #or
+#data['Date'] = data['Day'].astype(str)  + '-' + data['Month'] + '-' + data['Year'].astype(str) #or
 day = data['Day'].astype(str) 
 year = data['Year'].astype(str)
 data['Date'] = day + '-' + data['Month'] + '-' + year
 
 #-----------------------------------
-#VIEW SPECIFIC COLUMNS/ROWS
-data.iloc[0] #views the row with index = 0 which is the first row
-data.iloc[0:3] #views first 3 rows
-data.iloc[-5:] #views the last 5 rows
-data.iloc[:,2] #give a view of all rows on the 3rd column
-data.iloc[4,1] #views row 4th of column second
-
 data.head(5) #brings in first 5 rows
 
 #-------------------------------------
 #SPLIT FILED
-#syntax:    new_var = column.str.split('sep', expand = True)
 split_col = data['ClientKeywords'].str.split(',', expand = True)
 
 #assign each column from the splited columns to a new column
